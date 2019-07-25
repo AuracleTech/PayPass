@@ -84,14 +84,14 @@ public class EventListener implements Listener {
 								if(!ChatColor.stripColor(ln[3]).contains("$FREE")) price = Integer.parseInt(ChatColor.stripColor(ln[3]).substring(1));
 								String sellerName = (ChatColor.stripColor(ln[2]));
 								if(econ.hasAccount(sellerName)) {
-									if(plr.getName() != sellerName) {
+									if(!plr.getName().equals(sellerName)) {
 										if(econ.has(plr, price)) {
 											if(price > 0) {
 												econ.withdrawPlayer(plr, price);
 												econ.depositPlayer(sellerName, price);
-												if(server.getPlayer(sellerName) != null) server.getPlayerExact(sellerName).sendMessage(ChatColor.GOLD + plr.getName() + ChatColor.GREEN + " just used PayPass");
+												if(server.getPlayer(sellerName) != null) server.getPlayerExact(sellerName).sendMessage(ChatColor.GOLD + plr.getName() + ChatColor.GREEN + " just paid $"  + ChatColor.GOLD + price + ChatColor.GREEN + " PayPass");
 											}
-											plr.sendMessage(ChatColor.GREEN + "You have 4 seconds");
+											plr.sendMessage(ChatColor.GOLD + "You just paid $" + ChatColor.GREEN + price + ChatColor.GOLD + ", have 4 seconds of PayPass");
 										} else {
 											plr.sendMessage(ChatColor.RED + "You don't have enough money");
 											return;
