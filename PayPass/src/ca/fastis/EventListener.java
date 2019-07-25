@@ -52,7 +52,7 @@ public class EventListener implements Listener {
 				player.sendMessage(ChatColor.GREEN + "PayPass created at $" + price);
 				event.setLine(0, ChatColor.ITALIC + "PayPass" + ChatColor.RESET);
 				String line3Text = "FREE";
-				if(price != 0) { line3Text = event.getLine(3); }
+				if(price > 0) { line3Text = Integer.toString(price); }
 				event.setLine(2, ChatColor.BOLD + "" + player.getName());
 				event.setLine(3, ChatColor.BOLD + "" + ChatColor.GREEN + "$" + line3Text);
 			} catch(NumberFormatException ex) {
@@ -89,9 +89,9 @@ public class EventListener implements Listener {
 											if(price > 0) {
 												econ.withdrawPlayer(plr, price);
 												econ.depositPlayer(sellerName, price);
-												if(server.getPlayer(sellerName) != null) server.getPlayerExact(sellerName).sendMessage(ChatColor.GOLD + plr.getName() + ChatColor.GREEN + " just paid $"  + ChatColor.GOLD + price + ChatColor.GREEN + " PayPass");
+												if(server.getPlayer(sellerName) != null) server.getPlayerExact(sellerName).sendMessage(ChatColor.GOLD + plr.getName() + ChatColor.GREEN + " just paid "  + ChatColor.GOLD + "$" + price + ChatColor.GREEN + " via PayPass");
 											}
-											plr.sendMessage(ChatColor.GOLD + "You just paid $" + ChatColor.GREEN + price + ChatColor.GOLD + ", have 4 seconds of PayPass");
+											plr.sendMessage(ChatColor.GOLD + "You just paid " + ChatColor.GREEN + "$" + price + ChatColor.GOLD + " on PayPass");
 										} else {
 											plr.sendMessage(ChatColor.RED + "You don't have enough money");
 											return;
