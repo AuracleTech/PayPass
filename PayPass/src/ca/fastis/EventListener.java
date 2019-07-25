@@ -29,7 +29,7 @@ public class EventListener implements Listener {
 	private static Economy econ = null;
 	private static Permission perms = null;
 	private static Chat chat = null;
-	
+
 	public EventListener(PayPass plugin, Server server, ConsoleCommandSender console, Economy econ, Permission perms, Chat chat) {
 		this.plugin = plugin;
 		this.server = server;
@@ -49,7 +49,7 @@ public class EventListener implements Listener {
 		if(event.getLine(0).toLowerCase().contains("paypass") && blockAttached.getType() == Material.GOLD_BLOCK) {
 			try {
 				int price = Integer.parseInt(event.getLine(3));
-				player.sendMessage(ChatColor.GREEN + "PayPass created at $" + price);
+				player.sendMessage(ChatColor.GOLD + "PayPass created at " + ChatColor.GREEN + "$" + price);
 				event.setLine(0, ChatColor.ITALIC + "PayPass" + ChatColor.RESET);
 				String line3Text = "FREE";
 				if(price > 0) { line3Text = Integer.toString(price); }
@@ -58,8 +58,6 @@ public class EventListener implements Listener {
 			} catch(NumberFormatException ex) {
 				player.sendMessage(ChatColor.RED + "You need a valid price on the last line to use PayPass");
 			}
-			//sign.setLine(0, ChatColor.BOLD + ln[0].toString());
-			//plr.sendMessage(String.format("You just paid " + ln[3] + " and you have %s left, jk nothing changed uhuhuh", econ.format(econ.getBalance(plr.getName()))));
 		}
 	}
 
@@ -70,7 +68,7 @@ public class EventListener implements Listener {
 			if(e.getClickedBlock() != null) {
 				Block block = e.getClickedBlock();
 				Player plr = e.getPlayer();
-				if(block.getState().getBlockData() instanceof WallSign){  // myBlock.equals(Material.SIGN_POST)
+				if(block.getState().getBlockData() instanceof WallSign){
 					WallSign signData  = (WallSign) block.getState().getBlockData();
 					BlockFace attached = signData.getFacing().getOppositeFace();
 					Block blockAttached = block.getRelative(attached);
@@ -80,8 +78,7 @@ public class EventListener implements Listener {
 						if(ln[0].toLowerCase().contains(ChatColor.ITALIC + "paypass")){
 							e.setCancelled(true);
 							try {
-								int price = 0;
-								if(!ChatColor.stripColor(ln[3]).contains("$FREE")) price = Integer.parseInt(ChatColor.stripColor(ln[3]).substring(1));
+								int price = ChatColor.stripColor(ln[3]).contains("$FREE") ? 0 :Integer.parseInt(ChatColor.stripColor(ln[3]).substring(1));
 								String sellerName = (ChatColor.stripColor(ln[2]));
 								if(econ.hasAccount(sellerName)) {
 									if(!plr.getName().equals(sellerName)) {
