@@ -22,14 +22,11 @@ import net.milkbowl.vault.economy.Economy;
 
 public class EventListener implements Listener {
 	static Plugin plugin;
-	static Server server;
-	static ConsoleCommandSender console;
-	private static Economy econ = null;
-	public EventListener(PayPass plugin, Server server, ConsoleCommandSender console, Economy econ) {
+	static Server server = PayPass.server;
+	static ConsoleCommandSender console = PayPass.console;
+	private static Economy econ = PayPass.econ;
+	public EventListener(PayPass plugin) {
 		EventListener.plugin = plugin;
-		EventListener.server = server;
-		EventListener.console = console;
-		EventListener.econ = econ;
 	}
 
 	@EventHandler(priority=EventPriority.HIGHEST)

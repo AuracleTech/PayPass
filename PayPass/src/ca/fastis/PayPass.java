@@ -12,8 +12,8 @@ import net.milkbowl.vault.permission.Permission;
 
 public class PayPass extends JavaPlugin{
 	static Server server;
-	ConsoleCommandSender console;
-	private static Economy econ = null;
+	static ConsoleCommandSender console;
+	static Economy econ = null;
 	private static Permission perms = null;
 	private static Chat chat = null;
 	
@@ -28,7 +28,7 @@ public class PayPass extends JavaPlugin{
 		}
 		setupPermissions();
 		setupChat();
-		server.getPluginManager().registerEvents(new EventListener(this, server, console, econ), this);
+		server.getPluginManager().registerEvents(new EventListener(this), this);
 		console.sendMessage(ChatColor.GREEN + "[" + getDescription().getName() + "] Enabled!");
 	}
 	
