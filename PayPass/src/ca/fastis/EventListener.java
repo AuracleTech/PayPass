@@ -95,12 +95,12 @@ public class EventListener implements Listener {
 											return;
 										}
 									}
-									blockAttached.getWorld().playSound(blockAttached.getLocation(), "block.lever.click", SoundCategory.MASTER, 1F, 0.6F);
+									blockAttached.getWorld().playSound(blockAttached.getLocation(), "block.lever.click", SoundCategory.MASTER, 0.4F, 0.6F);
 									blockAttached.setType(Material.REDSTONE_BLOCK);
 									Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 										@Override
 										public void run() {
-											if(blockAttached.getType() == Material.REDSTONE_BLOCK) { blockAttached.setType(Material.GOLD_BLOCK); blockAttached.getWorld().playSound(blockAttached.getLocation(), "block.lever.click", SoundCategory.MASTER, 1F, 0.5F); }
+											if(blockAttached.getType() == Material.REDSTONE_BLOCK) { blockAttached.setType(Material.GOLD_BLOCK); blockAttached.getWorld().playSound(blockAttached.getLocation(), "block.lever.click", SoundCategory.MASTER, 0.4F, 0.5F); }
 										}
 									}, 4*20L);
 								} else {
