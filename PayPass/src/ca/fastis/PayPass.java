@@ -28,7 +28,7 @@ public class PayPass extends JavaPlugin{
 		}
 		setupPermissions();
 		setupChat();
-		server.getPluginManager().registerEvents(new EventListener(this, server, console, econ, perms, chat), this);
+		server.getPluginManager().registerEvents(new EventListener(this, server, console, econ), this);
 		console.sendMessage(ChatColor.GREEN + "[" + getDescription().getName() + "] Enabled!");
 	}
 	

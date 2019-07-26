@@ -7,7 +7,6 @@ import org.bukkit.Server;
 import org.bukkit.SoundCategory;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.block.Sign;
 import org.bukkit.block.data.type.WallSign;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -19,25 +18,18 @@ import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.Plugin;
 
-import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.permission.Permission;
 
 public class EventListener implements Listener {
-	Plugin plugin;
+	static Plugin plugin;
 	static Server server;
-	ConsoleCommandSender console;
+	static ConsoleCommandSender console;
 	private static Economy econ = null;
-	private static Permission perms = null;
-	private static Chat chat = null;
-
-	public EventListener(PayPass plugin, Server server, ConsoleCommandSender console, Economy econ, Permission perms, Chat chat) {
-		this.plugin = plugin;
-		this.server = server;
-		this.console = console;
-		this.econ = econ;
-		this.perms = perms;
-		this.chat = chat;
+	public EventListener(PayPass plugin, Server server, ConsoleCommandSender console, Economy econ) {
+		EventListener.plugin = plugin;
+		EventListener.server = server;
+		EventListener.console = console;
+		EventListener.econ = econ;
 	}
 
 	@EventHandler(priority=EventPriority.HIGHEST)
