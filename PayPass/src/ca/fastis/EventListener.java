@@ -40,12 +40,12 @@ public class EventListener implements Listener {
 			if(event.getLine(0).toLowerCase().contains("paypass") && blockAttached.getType() == Material.GOLD_BLOCK) {
 				try {
 					int price = Integer.parseInt(event.getLine(3));
-					player.sendMessage(ChatColor.GOLD + "PayPass created at " + ChatColor.GREEN + "$" + price);
-					event.setLine(0, ChatColor.ITALIC + "PayPass" + ChatColor.RESET);
+					event.setLine(2, ChatColor.BOLD + "" + player.getName());
 					String line3Text = "FREE";
 					if(price > 0) { line3Text = Integer.toString(price); }
-					event.setLine(2, ChatColor.BOLD + "" + player.getName());
 					event.setLine(3, ChatColor.BOLD + "" + ChatColor.GREEN + "$" + line3Text);
+					event.setLine(0, ChatColor.ITALIC + "PayPass");
+					player.sendMessage(ChatColor.GOLD + "PayPass created at " + ChatColor.GREEN + "$" + price);
 				} catch(NumberFormatException ex) {
 					player.sendMessage(ChatColor.RED + "You need a valid price on the last line to use PayPass");
 				}
